@@ -7,7 +7,6 @@ const Input = ({ type, placeholder, value, onChange }) => {
             placeholder={placeholder}
             value={value}
             onChange={onChange}
-            className="input"
         />
     );
 };

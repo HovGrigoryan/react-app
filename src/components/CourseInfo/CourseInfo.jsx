@@ -1,18 +1,28 @@
 import React from 'react';
+import getCourseDuration from '../../helpers/getCourseDuration';
 
-const CourseInfo = ({ course }) => {
-    const { id, title, description, duration, authors, creationDate } = course;
+const CourseInfo = ({ course, onBackToCourses }) => {
+    const {
+        id,
+        title,
+        description,
+        duration,
+        authors,
+        creationDate,
+    } = course;
+
+    const authorsList = authors.map(author => author.name).join(', ');
 
     return (
         <div className="course-info">
-            <h3>Course Information</h3>
-            <p>ID: {id}</p>
-            <p>Title: {title}</p>
-            <p>Description: {description}</p>
-            <p>Duration: {duration} minutes</p>
-            <p>Authors: {authors.join(', ')}</p>
-            <p>Creation Date: {creationDate}</p>
-            <button className="back-to-courses-button">Back to Courses</button>
+            <h2>Course Information</h2>
+            <p><strong>ID:</strong> {id}</p>
+            <p><strong>Title:</strong> {title}</p>
+            <p><strong>Description:</strong> {description}</p>
+            <p><strong>Duration:</strong> {getCourseDuration(duration)}</p>
+            <p><strong>Authors:</strong> {authorsList}</p>
+            <p><strong>Creation Date:</strong> {creationDate}</p>
+            <button onClick={onBackToCourses}>Back to Courses</button>
         </div>
     );
 };
